@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Technical Floor Plan – 1,152 sq ft / 107 m²</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@300;400;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #e8e4de;
+    font-family: 'Barlow', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+  h1 {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: #666;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+  }
+  .plan-wrapper {
+    background: #fdfcf9;
+    border: 1px solid #bbb;
+    padding: 70px 80px 80px 70px;
+    box-shadow: 0 6px 40px rgba(0,0,0,0.15);
+  }
+  .legend {
+    margin-top: 22px;
+    display: flex;
+    gap: 32px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: #444;
+    letter-spacing: 1px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 7px; }
+  .lb { width: 18px; height: 11px; border: 1px solid #999; }
+  .lb-wall { background: #1c1c2e; border-color: #1c1c2e; }
+  .lb-wet { background: rgba(168,216,234,0.35); border-color: #7ab; }
+  .lb-floor { background: #fdfcf9; border-color: #aaa; }
+  .lb-balc { background: #ede8df; border-style: dashed; border-color: #888; }
+  .stamp {
+    margin-top: 16px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: #aaa;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+  .github-cta {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    text-align: right;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: #333;
+  }
+  .github-cta-text {
+    margin-bottom: 6px;
+  }
+  .github-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 25%;
+    padding: 6px 14px;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  .github-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<div class="github-cta">
+  <div class="github-cta-text">To view the code for this page click Below</div>
+  <a class="github-button" href="https://github.com/" target="_blank" rel="noreferrer">
+    <img class="github-icon" src="githublogo.png" alt="GitHub logo" />
+    <span>GitHub</span>
+  </a>
+</div>
+
+<h1>Residential Unit — Floor Plan</h1>
+<div class="subtitle">Scale 1:75 &nbsp;·&nbsp; Dimensions in metres &nbsp;·&nbsp; Total: 107.0 m² (1,152 sq ft)</div>
+
+<div class="plan-wrapper">
+<!--
+  LAYOUT LOGIC (matching original image precisely):
+  ─────────────────────────────────────────────────
+  SVG canvas: 860 × 520
+  Scale: ~55 px = 1 m
+
+  OVERALL UNIT (inner face of outer walls):
+    Width:  13.10 m → 720 px
+    Height:  8.20 m → 451 px
+
+  Outer wall thickness: 16 px
+  Inner wall thickness: 12 px
+
+  Origin outer wall outer edge: x=0, y=0 inside SVG (shifted via translate)
+
+  ZONES:
+  Left open-plan (kitchen+living): 0 → 472 px wide (inner), ~8.58 m
+  Right bedroom zone: 484 → 720 px wide (inner), ~4.29 m
+  Central dividing wall: x=472–484
+
+  Within LEFT zone — completely OPEN, no horizontal wall
+
+  Within RIGHT zone:
+    Top wet area (laundry+bathrooms): y=0 → 150 px, ~2.73 m
+    Wet zone divided by vertical walls:
+      Laundry:    x=484 → 554 (70px, 1.27m)
+      wall: 554→566
+      Bathroom:   x=566 → 636 (70px, 1.27m)
+      wall: 636→648
+      MasterBath: x=648 → 736 (88px, 1.60m)  [736=east inner edge]
+
+    Bottom bedrooms: y=162 → 451 px, ~5.25 m
+      Bedroom1:  x=484 → 624 (140px, 2.55m)
+      wall: 624→636
+      Bedroom2:  x=636 → 736 (100px, 1.82m)
+
+  BALCONY: protrudes south from living room area
+    x=200 → 430, y=451 → 511 (external)
+-->
+<svg width="860" height="640" viewBox="0 0 860 640" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="dots" width="7" height="7" patternUnits="userSpaceOnUse">
+    <circle cx="3.5" cy="3.5" r="0.9" fill="#5599bb" opacity="0.35"/>
+  </pattern>
+  <pattern id="wallhatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+    <line x1="0" y1="0" x2="0" y2="5" stroke="#1c1c2e" stroke-width="2"/>
+  </pattern>
+  <marker id="arrow" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
+    <path d="M0,0 L5,2.5 L0,5 Z" fill="#555"/>
+  </marker>
+  <marker id="arrowL" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto-start-reverse">
+    <path d="M0,0 L5,2.5 L0,5 Z" fill="#555"/>
+  </marker>
+</defs>
+
+<!-- ═══════ TRANSLATE to leave margin for dim lines ═══════ -->
+<g transform="translate(85,55)">
+
+<!-- ══════════════════════════════════════════════
+     FLOOR FILL — entire unit footprint
+     Outer bounds: 0,0  to  736,451
+     Wall thickness outer=16, inner=12
+     ══════════════════════════════════════════════ -->
+
+<!-- Full floor background -->
+<rect x="0" y="0" width="736" height="451" fill="#f5f3ef"/>
+
+<!-- ══ OUTER WALLS ══ -->
+<!-- North -->
+<rect x="0" y="0" width="736" height="16" fill="#1c1c2e"/>
+<!-- South -->
+<rect x="0" y="435" width="736" height="16" fill="#1c1c2e"/>
+<!-- West (door opening between y=170 and y=210) -->
+<rect x="0" y="0" width="16" height="170" fill="#1c1c2e"/>
+<rect x="0" y="210" width="16" height="241" fill="#1c1c2e"/>
+<!-- East -->
+<rect x="720" y="0" width="16" height="451" fill="#1c1c2e"/>
+
+<!-- ══ CENTRAL DIVIDING WALL (vertical, full height) ══
+     Sits at x=468 to x=480 — thick party wall
+     Has a DOOR OPENING on south portion (bedroom entry) -->
+<!-- Top section: y=16 to y=195 (no opening) -->
+<rect x="468" y="16" width="12" height="179" fill="#1c1c2e"/>
+<!-- Gap for door opening: y=195 to y=235 (40px ~0.73m doorway) -->
+<!-- Bottom section: y=235 to y=435 -->
+<rect x="468" y="235" width="12" height="200" fill="#1c1c2e"/>
+
+<!-- ══ WET ZONE HORIZONTAL WALL (top of right zone) ══
+     Separates bathrooms from bedrooms
+     Runs from central wall to east wall: x=480 to x=720
+     Door openings cut out at shared bath, bedroom 2, and master bath entries -->
+<!-- Solid segments with gaps for doors:
+     [480–560], [600–628], [668–700] -->
+<rect x="480" y="150" width="80" height="12" fill="#1c1c2e"/>
+<rect x="600" y="150" width="28" height="12" fill="#1c1c2e"/>
+<rect x="668" y="150" width="32" height="12" fill="#1c1c2e"/>
+
+<!-- ══ LAUNDRY / BATHROOM VERTICAL DIVIDERS ══ -->
+<!-- Between laundry and bathroom: x=548 to 560, y=16 to 162 -->
+<rect x="548" y="16" width="12" height="146" fill="#1c1c2e"/>
+<!-- Between bathroom and master bath: x=624 to 636, y=16 to 162 -->
+<rect x="624" y="16" width="12" height="146" fill="#1c1c2e"/>
+
+<!-- ══ BEDROOM DIVIDING WALL (vertical) ══
+     Between bed1 and bed2: x=616 to 628, y=162 to 435 -->
+<rect x="616" y="162" width="12" height="273" fill="#1c1c2e"/>
+
+<!-- ══ SHORT CORRIDOR WALL STUB ══
+     In original image there's a small wall stub creating a mini-corridor
+     to the bathrooms, at top of right zone -->
+<!-- Small horizontal stub from central wall going east at y=195, length ~60px -->
+<rect x="480" y="193" width="60" height="12" fill="#1c1c2e"/>
+
+
+<!-- ══════════════════════════════════════════════
+     WET AREA FILLS
+     ══════════════════════════════════════════════ -->
+<!-- Laundry (x=480–548, y=16–150) -->
+<rect x="480" y="16" width="68" height="134" fill="url(#dots)"/>
+<!-- Shared Bathroom (x=560–624, y=16–150) -->
+<rect x="560" y="16" width="64" height="134" fill="url(#dots)"/>
+<!-- Master Bathroom (x=636–720, y=16–150) -->
+<rect x="636" y="16" width="84" height="134" fill="url(#dots)"/>
+
+<!-- ══════════════════════════════════════════════
+     WINDOWS (shown as gap + blue fill on outer walls)
+     ══════════════════════════════════════════════ -->
+<!-- North wall — kitchen counter windows -->
+<rect x="80" y="0" width="90" height="10" fill="#b8dce8" opacity="0.9"/>
+<rect x="200" y="0" width="70" height="10" fill="#b8dce8" opacity="0.9"/>
+<!-- North wall — master bath window -->
+<rect x="660" y="0" width="50" height="10" fill="#b8dce8" opacity="0.9"/>
+<!-- West wall — living room window -->
+<rect x="0" y="260" width="10" height="100" fill="#b8dce8" opacity="0.9"/>
+<!-- South wall — living room sliding door to balcony -->
+<rect x="200" y="437" width="190" height="10" fill="#b8dce8" opacity="0.9"/>
+<!-- South wall — bedroom windows -->
+<rect x="500" y="437" width="90" height="10" fill="#b8dce8" opacity="0.9"/>
+<rect x="650" y="437" width="55" height="10" fill="#b8dce8" opacity="0.9"/>
+<!-- East wall — bedroom 2 window -->
+<rect x="722" y="290" width="10" height="80" fill="#b8dce8" opacity="0.9"/>
+
+<!-- ══════════════════════════════════════════════
+     DOOR SWINGS
+     ══════════════════════════════════════════════ -->
+<!-- Living room door on west outer wall (above sectional couch) -->
+<line x1="16" y1="210" x2="56" y2="210" stroke="#1c1c2e" stroke-width="1.2"/>
+<path d="M16,170 A40,40 0 0,1 56,210" fill="none" stroke="#666" stroke-width="0.9" stroke-dasharray="3,2"/>
+
+<!-- Main entry door: in central wall opening, swings into living area -->
+<line x1="468" y1="195" x2="468" y2="235" stroke="none"/>
+<!-- Door leaf + arc swinging left (into open plan) -->
+<line x1="468" y1="235" x2="428" y2="235" stroke="#1c1c2e" stroke-width="1.2"/>
+<path d="M468,195 A40,40 0 0,0 428,235" fill="none" stroke="#666" stroke-width="0.9" stroke-dasharray="3,2"/>
+
+<!-- Bedroom 1 door: opens into bedroom from corridor, hinge at x=480,y=162 -->
+<line x1="480" y1="162" x2="520" y2="162" stroke="#1c1c2e" stroke-width="1.2"/>
+<path d="M480,162 A40,40 0 0,1 480,202" fill="none" stroke="#666" stroke-width="0.9" stroke-dasharray="3,2"/>
+
+<!-- Bedroom 2 door: hinge at x=628,y=162, swings into bed2 (downwards) -->
+<line x1="628" y1="162" x2="628" y2="202" stroke="#1c1c2e" stroke-width="1.2"/>
+<path d="M628,162 A40,40 0 0,1 668,162" fill="none" stroke="#666" stroke-width="0.9" stroke-dasharray="3,2"/>
+
+<!-- Shared bathroom door: hinge at x=560,y=150, swings into corridor below -->
+<line x1="560" y1="150" x2="560" y2="188" stroke="#1c1c2e" stroke-width="1.2"/>
+<path d="M560,150 A38,38 0 0,1 598,150" fill="none" stroke="#666" stroke-width="0.9" stroke-dasharray="3,2"/>
+
+<!-- Master bath door: hinge at x=720,y=150, swings into corridor/bed2 side -->
+<line x1="720" y1="150" x2="720" y2="188" stroke="#1c1c2e" stroke-width="1.2"/>
+<path d="M720,150 A38,38 0 0,0 682,150" fill="none" stroke="#666" stroke-width="0.9" stroke-dasharray="3,2"/>
+
+<!-- ══════════════════════════════════════════════
+     FURNITURE — schematic / architectural style
+     ══════════════════════════════════════════════ -->
+
+<!-- KITCHEN: counter along north wall -->
+<rect x="16" y="16" width="440" height="32" fill="none" stroke="#777" stroke-width="0.9"/>
+<!-- Hob / cooktop -->
+<rect x="130" y="17" width="60" height="30" fill="#eee" stroke="#777" stroke-width="0.7"/>
+<circle cx="148" cy="26" r="6" fill="none" stroke="#777" stroke-width="0.6"/>
+<circle cx="172" cy="26" r="6" fill="none" stroke="#777" stroke-width="0.6"/>
+<circle cx="148" cy="40" r="6" fill="none" stroke="#777" stroke-width="0.6"/>
+<circle cx="172" cy="40" r="6" fill="none" stroke="#777" stroke-width="0.6"/>
+<!-- Sink -->
+<rect x="230" y="18" width="44" height="27" fill="#e8f4f8" stroke="#777" stroke-width="0.7"/>
+<circle cx="252" cy="31" r="9" fill="none" stroke="#777" stroke-width="0.7"/>
+<!-- Fridge (west end of kitchen) -->
+<rect x="16" y="48" width="40" height="55" fill="none" stroke="#777" stroke-width="0.8"/>
+<line x1="36" y1="48" x2="36" y2="103" stroke="#777" stroke-width="0.5"/>
+<!-- Kitchen island -->
+<rect x="200" y="80" width="150" height="75" rx="2" fill="none" stroke="#888" stroke-width="0.8"/>
+
+<!-- LIVING ROOM -->
+<!-- Sofa (L-shape like original) -->
+<rect x="30" y="300" width="170" height="65" rx="3" fill="none" stroke="#888" stroke-width="0.8"/>
+<rect x="30" y="240" width="65" height="60" rx="3" fill="none" stroke="#888" stroke-width="0.8"/>
+<!-- Armchair -->
+<rect x="230" y="230" width="55" height="50" rx="3" fill="none" stroke="#888" stroke-width="0.7"/>
+<!-- Coffee table (round) -->
+<circle cx="155" cy="250" r="28" fill="none" stroke="#888" stroke-width="0.7" stroke-dasharray="2,2"/>
+<!-- Dining table (round) -->
+<circle cx="355" cy="360" r="42" fill="none" stroke="#888" stroke-width="0.8"/>
+<!-- Dining chairs -->
+<rect x="310" y="326" width="22" height="20" rx="2" fill="none" stroke="#888" stroke-width="0.6"/>
+<rect x="375" y="326" width="22" height="20" rx="2" fill="none" stroke="#888" stroke-width="0.6"/>
+<rect x="305" y="365" width="22" height="20" rx="2" fill="none" stroke="#888" stroke-width="0.6"/>
+<rect x="380" y="370" width="22" height="20" rx="2" fill="none" stroke="#888" stroke-width="0.6"/>
+<rect x="340" y="300" width="30" height="16" rx="2" fill="none" stroke="#888" stroke-width="0.6"/>
+<rect x="340" y="405" width="30" height="16" rx="2" fill="none" stroke="#888" stroke-width="0.6"/>
+
+<!-- BEDROOM 1 (x=480–616, y=162–435) -->
+<!-- Bed -->
+<rect x="492" y="230" width="110" height="155" rx="3" fill="none" stroke="#888" stroke-width="0.8"/>
+<rect x="492" y="235" width="110" height="30" fill="none" stroke="#888" stroke-width="0.6"/>
+<rect x="500" y="240" width="38" height="19" rx="2" fill="none" stroke="#888" stroke-width="0.5"/>
+<rect x="557" y="240" width="38" height="19" rx="2" fill="none" stroke="#888" stroke-width="0.5"/>
+<!-- Wardrobe -->
+<rect x="480" y="390" width="120" height="40" fill="none" stroke="#888" stroke-width="0.7"/>
+<line x1="540" y1="390" x2="540" y2="430" stroke="#888" stroke-width="0.5"/>
+
+<!-- BEDROOM 2 (x=628–720, y=162–435) -->
+<!-- Bed -->
+<rect x="633" y="240" width="80" height="130" rx="3" fill="none" stroke="#888" stroke-width="0.8"/>
+<rect x="633" y="240" width="80" height="26" fill="none" stroke="#888" stroke-width="0.6"/>
+<rect x="640" y="245" width="28" height="16" rx="2" fill="none" stroke="#888" stroke-width="0.5"/>
+<rect x="677" y="245" width="28" height="16" rx="2" fill="none" stroke="#888" stroke-width="0.5"/>
+<!-- Wardrobe -->
+<rect x="628" y="385" width="85" height="40" fill="none" stroke="#888" stroke-width="0.7"/>
+<line x1="670" y1="385" x2="670" y2="425" stroke="#888" stroke-width="0.5"/>
+
+<!-- LAUNDRY: washer stack -->
+<rect x="490" y="25" width="30" height="30" rx="2" fill="none" stroke="#666" stroke-width="0.7"/>
+<circle cx="505" cy="40" r="10" fill="none" stroke="#666" stroke-width="0.6"/>
+<rect x="490" y="63" width="30" height="30" rx="2" fill="none" stroke="#666" stroke-width="0.7"/>
+<circle cx="505" cy="78" r="10" fill="none" stroke="#666" stroke-width="0.6"/>
+
+<!-- SHARED BATHROOM: toilet + sink -->
+<rect x="569" y="20" width="26" height="36" rx="3" fill="none" stroke="#666" stroke-width="0.7"/>
+<ellipse cx="582" cy="62" rx="14" ry="10" fill="none" stroke="#666" stroke-width="0.7"/>
+
+<!-- MASTER BATHROOM: tub + toilet + sink -->
+<rect x="638" y="20" width="50" height="32" rx="4" fill="none" stroke="#666" stroke-width="0.7"/>
+<ellipse cx="664" cy="36" rx="18" ry="11" fill="none" stroke="#666" stroke-width="0.5"/>
+<rect x="692" y="20" width="26" height="36" rx="3" fill="none" stroke="#666" stroke-width="0.7"/>
+<ellipse cx="706" cy="62" rx="13" ry="9" fill="none" stroke="#666" stroke-width="0.7"/>
+
+<!-- ══════════════════════════════════════════════
+     BALCONY (external, south)
+     x=200–430, protrudes 55px south (1.0m)
+     ══════════════════════════════════════════════ -->
+<rect x="200" y="451" width="230" height="44" fill="#ede8df" stroke="#1c1c2e" stroke-width="1.2" stroke-dasharray="6,3"/>
+<!-- Balcony rail line -->
+<rect x="204" y="455" width="222" height="36" fill="none" stroke="#aaa" stroke-width="0.7"/>
+
+<!-- ══════════════════════════════════════════════
+     ROOM LABELS
+     ══════════════════════════════════════════════ -->
+<g font-family="'Share Tech Mono', monospace" fill="#1c1c2e">
+  <!-- Kitchen -->
+  <text x="275" y="115" text-anchor="middle" font-size="11" letter-spacing="2" font-weight="bold">KITCHEN</text>
+  <text x="275" y="130" text-anchor="middle" font-size="8.5" fill="#555" letter-spacing="1">7.65 × 2.91 m = 22.3 m²</text>
+
+  <!-- Living Room -->
+  <text x="260" y="190" text-anchor="middle" font-size="11" letter-spacing="2" font-weight="bold">LIVING ROOM</text>
+  <text x="260" y="210" text-anchor="middle" font-size="8.5" fill="#555" letter-spacing="1">7.65 × 3.96 m = 30.3 m²</text>
+
+  <!-- Couch-->
+  <text x="120" y="330" text-anchor="middle" font-size="11" letter-spacing="2" font-weight="bold">Sectional Couch</text>
+
+  <!-- Coffee Table-->
+  <text x="160" y="250" text-anchor="middle" font-size="8" letter-spacing="2" font-weight="bold">Coffee Table</text>
+
+  <!-- Arm Chair-->
+  <text x="258" y="256" text-anchor="middle" font-size="8" letter-spacing="2" font-weight="bold">Arm Chair</text>
+
+  <!-- Dinner Table-->
+  <text x="355" y="360" text-anchor="middle" font-size="11" letter-spacing="2" font-weight="bold">Dinner Table</text>
+
+  <!-- Bed-->
+  <text x="545" y="330" text-anchor="middle" font-size="11" letter-spacing="2" font-weight="bold">Bed</text>
+
+  <!-- Bed-->
+  <text x="673" y="320" text-anchor="middle" font-size="11" letter-spacing="2" font-weight="bold">Bed</text>
+
+  <!-- In-Suite Laundry -->
+  <text x="514" y="116" text-anchor="middle" font-size="7.5" letter-spacing="1" font-weight="bold">IN-SUITE</text>
+  <text x="514" y="128" text-anchor="middle" font-size="7.5" letter-spacing="1" font-weight="bold">LAUNDRY</text>
+  <text x="514" y="140" text-anchor="middle" font-size="7" fill="#555">1.24×2.44m</text>
+
+  <!-- Bathroom -->
+  <text x="592" y="116" text-anchor="middle" font-size="7.5" letter-spacing="1" font-weight="bold">BATH ROOM</text>
+  <text x="592" y="140" text-anchor="middle" font-size="7" fill="#555">1.16×2.44m</text>
+
+  <!-- Master Bathroom -->
+  <text x="678" y="110" text-anchor="middle" font-size="7.5" letter-spacing="1" font-weight="bold">MASTER</text>
+  <text x="678" y="122" text-anchor="middle" font-size="7.5" letter-spacing="1" font-weight="bold">BATHROOM</text>
+  <text x="678" y="134" text-anchor="middle" font-size="7" fill="#555">1.53×2.44m</text>
+
+  <!-- Bedroom 1 -->
+  <text x="540" y="215" text-anchor="middle" font-size="10" letter-spacing="2" font-weight="bold">BEDROOM 1</text>
+  <text x="540" y="223" text-anchor="middle" font-size="8" fill="#555" letter-spacing="1">2.47 × 4.96 m = 12.2 m²</text>
+
+  <!-- Bedroom 2 -->
+  <text x="680" y="210" text-anchor="middle" font-size="10" letter-spacing="2" font-weight="bold">BEDROOM 2</text>
+  <text x="674" y="223" text-anchor="middle" font-size="7" fill="#555" letter-spacing=".3">1.67 × 4.96 m = 8.3 m²</text>
+
+  <!-- Balcony -->
+  <text x="315" y="476" text-anchor="middle" font-size="9" letter-spacing="2" font-weight="bold">BALCONY</text>
+  <text x="315" y="489" text-anchor="middle" font-size="7.5" fill="#777" letter-spacing="1">4.18 × 0.80 m = 3.3 m²</text>
+</g>
+
+<!-- ══════════════════════════════════════════════
+     DIMENSION LINES
+     All external dims use tick marks
+     ══════════════════════════════════════════════ -->
+<g stroke="#444" stroke-width="0.75" fill="#333" font-family="'Share Tech Mono', monospace" font-size="8.5">
+
+  <!-- ── OVERALL WIDTH (top, above plan) ── -->
+  <line x1="0" y1="-18" x2="736" y2="-18"/>
+  <line x1="0" y1="-23" x2="0" y2="-13"/>
+  <line x1="736" y1="-23" x2="736" y2="-13"/>
+  <text x="368" y="-22" text-anchor="middle" font-size="9" letter-spacing="1">13.38 m</text>
+
+  <!-- Sub-dims top: left zone vs right zone width -->
+  <line x1="0" y1="-6" x2="468" y2="-6" stroke="#888" stroke-width="0.6"/>
+  <line x1="0" y1="-9" x2="0" y2="-3" stroke="#888" stroke-width="0.6"/>
+  <line x1="468" y1="-9" x2="468" y2="-3" stroke="#888" stroke-width="0.6"/>
+  <text x="234" y="-9" text-anchor="middle" font-size="7.5" fill="#666">8.51 m (open plan)</text>
+
+  <line x1="480" y1="-6" x2="736" y2="-6" stroke="#888" stroke-width="0.6"/>
+  <line x1="480" y1="-9" x2="480" y2="-3" stroke="#888" stroke-width="0.6"/>
+  <line x1="736" y1="-9" x2="736" y2="-3" stroke="#888" stroke-width="0.6"/>
+  <text x="608" y="-9" text-anchor="middle" font-size="7.5" fill="#666">4.65 m (beds+baths)</text>
+
+  <!-- ── OVERALL HEIGHT (right side) ── -->
+  <line x1="754" y1="0" x2="754" y2="451"/>
+  <line x1="749" y1="0" x2="759" y2="0"/>
+  <line x1="749" y1="451" x2="759" y2="451"/>
+  <text x="768" y="230" text-anchor="middle" font-size="9" letter-spacing="1" transform="rotate(90,768,230)">8.20 m</text>
+
+  <!-- Sub-dims right: wet zone height vs bedroom zone height -->
+  <line x1="742" y1="0" x2="742" y2="162" stroke="#888" stroke-width="0.6"/>
+  <line x1="738" y1="0" x2="746" y2="0" stroke="#888" stroke-width="0.6"/>
+  <line x1="738" y1="162" x2="746" y2="162" stroke="#888" stroke-width="0.6"/>
+  <text x="730" y="68" text-anchor="middle" font-size="7.5" fill="#666" transform="rotate(90,730,83)">2.95 m</text>
+
+  <line x1="742" y1="162" x2="742" y2="451" stroke="#888" stroke-width="0.6"/>
+  <line x1="738" y1="162" x2="746" y2="162" stroke="#888" stroke-width="0.6"/>
+  <line x1="738" y1="451" x2="746" y2="451" stroke="#888" stroke-width="0.6"/>
+  <text x="730" y="295" text-anchor="middle" font-size="7.5" fill="#666" transform="rotate(90,730,310)">5.25 m</text>
+
+  <!-- ── LEFT SIDE: kitchen depth vs living depth ── -->
+  <line x1="-18" y1="16" x2="-18" y2="451"/>
+  <line x1="-13" y1="16" x2="-23" y2="16"/>
+  <line x1="-13" y1="451" x2="-23" y2="451"/>
+  <!-- open plan — no internal split, so just label full -->
+  <text x="-30" y="234" text-anchor="middle" font-size="8.5" letter-spacing="1" transform="rotate(-90,-30,234)">8.20 m OPEN PLAN</text>
+
+  <!-- ── BOTTOM: room widths ── -->
+  <!-- Bedroom1 width -->
+  <line x1="480" y1="462" x2="616" y2="462" stroke="#888" stroke-width="0.6"/>
+  <line x1="480" y1="458" x2="480" y2="466" stroke="#888" stroke-width="0.6"/>
+  <line x1="616" y1="458" x2="616" y2="466" stroke="#888" stroke-width="0.6"/>
+  <text x="548" y="474" text-anchor="middle" font-size="7.5" fill="#555">2.47 m</text>
+
+  <!-- Bedroom2 width -->
+  <line x1="628" y1="462" x2="736" y2="462" stroke="#888" stroke-width="0.6"/>
+  <line x1="628" y1="458" x2="628" y2="466" stroke="#888" stroke-width="0.6"/>
+  <line x1="736" y1="458" x2="736" y2="466" stroke="#888" stroke-width="0.6"/>
+  <text x="682" y="474" text-anchor="middle" font-size="7.5" fill="#555">1.96 m</text>
+
+  <!-- ── TOP: wet room widths ── -->
+  <line x1="480" y1="-32" x2="548" y2="-32" stroke="#888" stroke-width="0.6"/>
+  <line x1="480" y1="-36" x2="480" y2="-28" stroke="#888" stroke-width="0.6"/>
+  <line x1="548" y1="-36" x2="548" y2="-28" stroke="#888" stroke-width="0.6"/>
+  <text x="514" y="-34" text-anchor="middle" font-size="7" fill="#555">1.24 m</text>
+
+  <line x1="560" y1="-32" x2="624" y2="-32" stroke="#888" stroke-width="0.6"/>
+  <line x1="560" y1="-36" x2="560" y2="-28" stroke="#888" stroke-width="0.6"/>
+  <line x1="624" y1="-36" x2="624" y2="-28" stroke="#888" stroke-width="0.6"/>
+  <text x="592" y="-34" text-anchor="middle" font-size="7" fill="#555">1.16 m</text>
+
+  <line x1="636" y1="-32" x2="736" y2="-32" stroke="#888" stroke-width="0.6"/>
+  <line x1="636" y1="-36" x2="636" y2="-28" stroke="#888" stroke-width="0.6"/>
+  <line x1="736" y1="-36" x2="736" y2="-28" stroke="#888" stroke-width="0.6"/>
+  <text x="686" y="-34" text-anchor="middle" font-size="7" fill="#555">1.82 m</text>
+
+</g>
+
+<!-- ══════════════════════════════════════════════
+     NORTH ARROW
+     ══════════════════════════════════════════════ -->
+<g transform="translate(700,540)">
+  <circle cx="0" cy="0" r="22" fill="none" stroke="#1c1c2e" stroke-width="1.2"/>
+  <polygon points="0,-17 5,5 0,0 -5,5" fill="#1c1c2e"/>
+  <polygon points="0,17 5,-5 0,0 -5,-5" fill="none" stroke="#1c1c2e" stroke-width="1"/>
+  <text x="0" y="-24" text-anchor="middle" font-size="10" fill="#1c1c2e" font-family="'Share Tech Mono', monospace" font-weight="bold">N</text>
+</g>
+
+<!-- ══════════════════════════════════════════════
+     TITLE BLOCK (below balcony, fully visible)
+     ══════════════════════════════════════════════ -->
+<rect x="480" y="510" width="190" height="55" fill="none" stroke="#1c1c2e" stroke-width="1"/>
+<line x1="480" y1="523" x2="670" y2="523" stroke="#1c1c2e" stroke-width="0.7"/>
+<text x="575" y="519" text-anchor="middle" font-size="8" fill="#1c1c2e" font-family="'Share Tech Mono', monospace" letter-spacing="1">UNIT A — FLOOR PLAN</text>
+<text x="575" y="536" text-anchor="middle" font-size="7.5" fill="#555" font-family="'Share Tech Mono', monospace">SCALE 1:75</text>
+<text x="575" y="548" text-anchor="middle" font-size="7.5" fill="#555" font-family="'Share Tech Mono', monospace">TOTAL: 107.0 m² / 1,152 sq ft</text>
+<text x="575" y="560" text-anchor="middle" font-size="7.5" fill="#555" font-family="'Share Tech Mono', monospace">DWG: A-101  REV.01  FEB 06 2026</text>
+
+</g><!-- end translate -->
+</svg>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="lb lb-wall"></div> Structural Wall</div>
+  <div class="legend-item"><div class="lb lb-wet"></div> Wet Area (Bath / Laundry)</div>
+  <div class="legend-item"><div class="lb lb-floor"></div> Habitable Space</div>
+  <div class="legend-item"><div class="lb lb-balc"></div> Balcony (External)</div>
+  <div class="legend-item"><div class="lb" style="background:#b8dce8;border-color:#7ab;"></div> Window / Glazing</div>
+</div>
+
+<div class="stamp">
+  ALL DIMENSIONS IN METRES &nbsp;·&nbsp; AREAS APPROXIMATE &nbsp;·&nbsp; NOT FOR CONSTRUCTION USE
+</div>
+
+</body>
+</html>
